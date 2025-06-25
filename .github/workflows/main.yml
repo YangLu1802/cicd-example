@@ -3,14 +3,14 @@ on: push
 
 jobs:
   greeting:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     steps: 
       - name: Greeting!
         run: echo hello world
 
   test_python-versions:
     name: Check Python ${{ matrix.python-version }} on Ubuntu
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     strategy: 
       matrix:
         python-version: ["3.11", "3.12"]
