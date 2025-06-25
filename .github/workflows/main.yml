@@ -8,15 +8,18 @@ jobs:
       - name: Greeting!
         run: echo hello world
 
-  test_python-3-12:
-    name: Check Python 3.12 on Ubuntu
+  test_python-versions:
+    name: Check Python ${{ matrix.python-version }} on Ubuntu
     runs-on: ubuntu_latest
+    strategy: 
+      matrix:
+        python-version: ["3.11", "3.12"]
     steps:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-python@v4
         with: 
-          python-version: "3.12" # quote ensure not goes to 3.1
+          python-version: ${{ matrix.python-version }} # quote ensure not goes to 3.1
 
       - name: Install package
         run: python -m pip install -e . [test] # specify the optional package that do need to be installed
